@@ -6,14 +6,13 @@ import PhotoSection from '@/app/_components/photoSection'
 import getReviews from '@/app/_lib/getReviews'
 
 export default async function Page() {
-  const reviews = await getReviews()
   return (
     <main>
       <Hero />
       <About />
       <PhotoSection />
       <Vendor />
-      <Reviews reviews={reviews} />
+      <Reviews />
     </main>
   )
 }

@@ -1,7 +1,7 @@
 // app/api/getReviews/route.js or pages/api/getReviews.js
 export async function GET(request) {
   const placeId = 'ChIJVVUBkdMh6IgRthsmb5FlAjs'
-  const apiKey = 'AIzaSyC0KMQTQb3BN4aQDqyCOLQkY24kdp76K1I'
+  const apiKey = NEXT_PUBLIC_GOOGLE_API_KEY
   const url = `https://maps.googleapis.com/maps/api/place/details/json?place_id=${placeId}&fields=review&key=${apiKey}`
 
   try {

@@ -1,0 +1,8 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".", // This sets the base URL for resolving non-relative module imports
+    "paths": {
+      "@/*": ["./*"] // This sets the alias for the project root
+    }
+  }
+}

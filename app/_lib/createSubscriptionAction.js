@@ -17,13 +17,13 @@ export async function createStripeCheckoutSubscription(lineItems) {
     return { sessionId: null, checkoutError: 'You need to sign in first.' }
   }
 
-  if (user.publicMetadata.type === 'subscription') {
-    return {
-      sessionId: null,
-      redirectUrl: origin, // Replace with your desired URL
-      checkoutError: 'You are already subscribed to a plan.',
-    }
-  }
+  // if (user.publicMetadata.type === 'subscription') {
+  //   return {
+  //     sessionId: null,
+  //     redirectUrl: origin, // Replace with your desired URL
+  //     checkoutError: 'You are already subscribed to a plan.',
+  //   }
+  // }
 
   const session = await stripe.checkout.sessions.create({
     mode: 'subscription',

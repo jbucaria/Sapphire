@@ -11,15 +11,6 @@ const nextConfig = {
       },
     ],
   },
-  async redirects() {
-    return [
-      {
-        source: '/checkout',
-        destination: '/checkout', // Redirect to the same route for dynamic handling
-        permanent: false,
-      },
-    ]
-  },
 }
 
 export default nextConfig

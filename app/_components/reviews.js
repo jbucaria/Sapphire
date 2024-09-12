@@ -38,7 +38,7 @@ export default function Reviews() {
   return (
     <section className="text-white relative isolate overflow-hidden bg-gradient-to-b from-blue-700 via-sky-600 to-sky-400 lg:px-8 my-5">
       <div className="mx-auto max-w-2xl lg:max-w-4xl">
-        <div className="p-5 text-center">
+        <div className="p-5 text-center h-96">
           <a href="/reviews">
             <h1 className="uppercase font-extrabold text-2xl mb-5 tracking-widest">
               Hear from our customers
@@ -48,20 +48,9 @@ export default function Reviews() {
             {rating === 5 ? '⭐️ ⭐️ ⭐️ ⭐️ ⭐️' : ''}
           </h2>
 
-          <div key={author_name} className="mt-10">
-            <div className="text-white text-center text-xl font-semibold leading-8 sm:text-2xl sm:leading-9 tracking-wide">
+          <div key={author_name} className="mt-10 h-28">
+            <div className=" line-clamp-3 overflow-auto overflow-x-hidden text-white text-center text-xl font-semibold leading-8 sm:text-2xl sm:leading-9 tracking-wide">
               <p>{text}</p>
-            </div>
-
-            <div className="mt-4 flex items-center justify-center space-x-3 text-base">
-              <div className="font-semibold text-white">{author_name}</div>
-              <Image
-                width={36}
-                height={36}
-                className="h-8 w-8 rounded-full"
-                src={profile_photo_url}
-                alt="User Profile"
-              />
             </div>
           </div>
 
@@ -74,6 +63,16 @@ export default function Reviews() {
             >
               <Image src={leftArrow} width={36} height={36} alt="Previous" />
             </button>
+            <div className="mt-4 flex items-center justify-center space-x-3 text-base">
+              <div className="font-semibold text-white">{author_name}</div>
+              <Image
+                width={36}
+                height={36}
+                className="h-8 w-8 rounded-full"
+                src={profile_photo_url}
+                alt="User Profile"
+              />
+            </div>
             <button
               onClick={handleNext}
               aria-label="Next Review"

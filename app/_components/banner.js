@@ -18,7 +18,7 @@ export default function Banner() {
       </div>
       <div className="relative flex flex-wrap items-center gap-x-4 gap-y-2 overflow-hidden w-full">
         <div className="sm:flex sm:justify-center w-full animate-scroll sm:animate-none my-5">
-          <p className="text-2xl leading-6 text-black inline-block whitespace-nowrap">
+          <p className="text-2xl leading-6 text-white inline-block whitespace-nowrap">
             <strong className="font-bold">Free Estimates</strong>
             <svg
               viewBox="0 0 2 2"

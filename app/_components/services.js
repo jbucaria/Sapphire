@@ -41,8 +41,8 @@ export default function Example({
   const { user } = useUser()
   const router = useRouter()
 
-  function onSubmit() {
-    !user ? openSignIn() : router.push('/account')
+  function redirectToAnotherPage() {
+    router.push('/login')
   }
 
   return (
@@ -97,7 +97,7 @@ export default function Example({
                   </p>
 
                   <button
-                    onClick={handleTier1}
+                    onClick={!user ? redirectToAnotherPage : handleTier1}
                     className="mt-10 block w-full rounded-md bg-sky-600 px-3 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-sky-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-600"
                   >
                     Purchase Plan
@@ -157,7 +157,7 @@ export default function Example({
                     </span>
                   </p>
                   <button
-                    onClick={handleTier2}
+                    onClick={!user ? redirectToAnotherPage : handleTier1}
                     className="mt-10 block w-full rounded-md bg-sky-600 px-3 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-sky-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-600"
                   >
                     Purchase Plan

@@ -16,7 +16,7 @@ export default function Checkout() {
 
     retrieveStripeCheckoutSession(sessionId).then(({ success, error }) => {
       if (success) {
-        session.reload()
+        window.location.reload()
       }
 
       if (error) {

@@ -32,13 +32,23 @@ export async function retrieveStripeCheckoutSession(sessionId) {
     }
   }
 
-  const session = await stripe.checkout.sessions.retrieve(sessionId)
+  const session = await stripe.checkout.sessions.retrieve(sessionId, {
+    expand: ['subscription'],
+  })
 
   await clerkClient.users.updateUserMetadata(user.id, {
     publicMetadata: {
       type: session.mode,
       checkoutSessionIds: [...previousCheckoutSessionIds, sessionId],
       stripeCustomerId: session.customer,
+      stripeSubscriptionId:
+        typeof session.subscription === 'string'
+          ? session.subscription
+          : session.subscription?.id,
+      stripeCurrentPeriodEnd:
+        typeof session.subscription === 'string'
+          ? undefined
+          : session.subscription?.current_period_end,
     },
   })
 

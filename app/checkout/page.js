@@ -5,8 +5,10 @@ import { useEffect } from 'react'
 import { useClerk } from '@clerk/nextjs'
 import { useSearchParams } from 'next/navigation'
 import { retrieveStripeCheckoutSession } from '@/app/_lib/handleCheckout'
+import { useRouter } from 'next/navigation'
 
 export default function Checkout() {
+  const router = useRouter()
   const { session } = useClerk()
   const searchParams = useSearchParams()
   const sessionId = searchParams.get('sessionId')
@@ -16,14 +18,14 @@ export default function Checkout() {
 
     retrieveStripeCheckoutSession(sessionId).then(({ success, error }) => {
       if (success) {
-        window.location.reload()
+        router.refresh()
       }
 
       if (error) {
-        throw new Error('Failed to retrieve checkout session!')
+        console.error('Failed to retrieve checkout session!')
       }
     })
-  }, [sessionId, session])
+  }, [sessionId, session, router])
 
   return (
     <section className="flex items-center justify-center h-screen">

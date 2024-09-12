@@ -18,7 +18,7 @@ export async function createStripeCheckoutSubscription(lineItems) {
   if (user.publicMetadata.type === 'subscription') {
     return {
       sessionId: null,
-      redirectUrl: 'localhost:3000', // Replace with your desired URL
+      redirectUrl: 'http://localhost:3000', // Replace with your desired URL
       checkoutError: 'You are already subscribed to a plan.',
     }
   }

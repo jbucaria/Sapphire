@@ -8,6 +8,8 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY, {
   apiVersion: '2023-10-16',
 })
 
+const origin = process.env.NEXT_PUBLIC_SITE_URL
+
 export async function createStripeCheckoutSubscription(lineItems) {
   const user = await currentUser()
 
@@ -18,11 +20,10 @@ export async function createStripeCheckoutSubscription(lineItems) {
   if (user.publicMetadata.type === 'subscription') {
     return {
       sessionId: null,
-      redirectUrl: 'http://localhost:3000', // Replace with your desired URL
+      redirectUrl: origin, // Replace with your desired URL
       checkoutError: 'You are already subscribed to a plan.',
     }
   }
-  const origin = process.env.NEXT_PUBLIC_SITE_URL
 
   const session = await stripe.checkout.sessions.create({
     mode: 'subscription',

@@ -28,7 +28,7 @@ export async function createStripeCheckoutSubscription(lineItems) {
   const session = await stripe.checkout.sessions.create({
     mode: 'subscription',
     line_items: lineItems,
-    success_url: `${origin}/checkout?sessionId={CHECKOUT_SESSION_ID}`,
+    success_url: origin,
     cancel_url: origin,
     customer: user.stripeCustomerId || undefined,
     customer_email: user.stripeCustomerId
